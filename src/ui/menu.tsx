@@ -17,10 +17,10 @@ export default function NavigationMenuDemo() {
         <NavigationMenu viewport={isMobile}>
           <NavigationMenuList className="flex-wrap">
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Home</NavigationMenuTrigger>
+              <NavigationMenuTrigger>全球</NavigationMenuTrigger>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+              <NavigationMenuTrigger>排行</NavigationMenuTrigger>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
