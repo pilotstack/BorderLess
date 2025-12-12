@@ -1,4 +1,4 @@
-import { US } from 'country-flag-icons/react/3x2';
+import { CountryFlag } from '../ui/country_flag';
 import {
   Tooltip,
   TooltipContent,
@@ -17,7 +17,7 @@ const passport_detail = () => {
     <>
       <div className="flex flex-col  gap-2">
         <div className="flex justify-center gap-2 items-center mb-6">
-          <US title="United States" className="w-12 h-auto" />
+          <CountryFlag code="CN" />
           <div className="flex flex-col">
             <span className="font-bold text-xl">美国</span>
           </div>

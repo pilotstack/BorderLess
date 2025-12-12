@@ -3,24 +3,26 @@ import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuList,
-  NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
 import { ModeToggle } from '@/ui/mode-toggle';
 import logo from '../assets/borderLess.svg';
+import { Link } from 'react-router';
 export default function NavigationMenuDemo() {
   const isMobile = useIsMobile();
 
   return (
     <div className="flex my-2 mx-2 gap-3 justify-between items-center">
       <div className="flex items-center gap-3">
-        <img src={logo} width={150} alt="BorderLessLogo" />
+        <Link to="/">
+          <img src={logo} width={150} alt="BorderLessLogo" />
+        </Link>
         <NavigationMenu viewport={isMobile}>
-          <NavigationMenuList className="flex-wrap">
+          <NavigationMenuList className="flex-wrap gap-4">
             <NavigationMenuItem>
-              <NavigationMenuTrigger>全球</NavigationMenuTrigger>
+              <Link to="all_passport">全球</Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuTrigger>排行</NavigationMenuTrigger>
+              <Link to="rank">排行</Link>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>

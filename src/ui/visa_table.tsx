@@ -8,7 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import * as Flags from 'country-flag-icons/react/3x2';
+import { CountryFlagMini } from '../ui/country_flag';
 const invoices = [
   {
     invoice: 'INV001',
@@ -60,12 +60,7 @@ const invoices = [
     paymentMethod: 'Credit Card',
   },
 ];
-type FlagCode = keyof typeof Flags;
 
-function CountryFlag({ code }: { code: string }) {
-  const Flag = Flags[code as FlagCode];
-  return Flag ? <Flag className="w-6" /> : null;
-}
 export function VisaTable() {
   return (
     <Table>
@@ -85,7 +80,7 @@ export function VisaTable() {
         {invoices.map((invoice) => (
           <TableRow key={invoice.invoice}>
             <TableCell className="font-medium flex gap-1">
-              <CountryFlag code={invoice.flag} />
+              <CountryFlagMini code={invoice.flag} />
               {invoice.invoice}
             </TableCell>
             <TableCell>{invoice.paymentStatus}</TableCell>
