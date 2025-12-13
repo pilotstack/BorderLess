@@ -1,4 +1,5 @@
 import { CountryFlag } from '../ui/country_flag';
+import { useNavigate } from 'react-router';
 import {
   Asia,
   Europe,
@@ -16,7 +17,12 @@ const Continents = [
   { name: '大洋洲', data: Oceania },
 ];
 
-const all_passport = () => {
+const All_passport = () => {
+  const navigate = useNavigate();
+
+  const handleCountryClick = (flag: string) => {
+    navigate(`/passport/${flag}`);
+  };
   return (
     <>
       <div className="flex flex-col items-center ">
@@ -35,13 +41,14 @@ const all_passport = () => {
 
             <div className="grid grid-cols-4 gap-8">
               {group.data.map((item) => (
-                <span
+                <button
                   key={item.flag}
-                  className="w-70 border-2 dark:border-purple-200 px-4 py-2 rounded-full flex items-center text-2xl gap-2"
+                  onClick={() => handleCountryClick(item.flag)}
+                  className="w-70 border-2 dark:border-purple-200 px-4 py-2 rounded-full flex items-center text-2xl gap-2 hover:bg-purple-100 dark:hover:bg-purple-900 transition-colors cursor-pointer"
                 >
                   <CountryFlag code={item.flag} />
                   {item.country}
-                </span>
+                </button>
               ))}
             </div>
           </div>
@@ -50,4 +57,4 @@ const all_passport = () => {
     </>
   );
 };
-export default all_passport;
+export default All_passport;

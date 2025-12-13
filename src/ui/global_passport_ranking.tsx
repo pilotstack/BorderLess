@@ -1,4 +1,5 @@
 import { DataTableDemo as RankTable } from '../ui/rank_table';
+
 const all_passport = () => {
   return (
     <>
@@ -9,22 +10,22 @@ const all_passport = () => {
           </span>
         </span> */}
 
-      <div className="flex  justify-center gap-24   ">
+      <div className="flex  justify-center gap-16   ">
         <div className="flex flex-col  items-center">
           <span className="text-blue-500 font-mono text-4xl   ">
             自由度排行
           </span>
-          <RankTable></RankTable>
+          <RankTable sortType="freedom" />
         </div>
         <div className="flex flex-col  items-center">
           <span className="text-amber-400 font-mono text-4xl  ">
             免签数量排行
           </span>
-          <RankTable></RankTable>
+          <RankTable sortType="visa_free" />
         </div>
         <div className="flex flex-col  items-center">
           <span className="text-green-500 font-mono text-4xl  ">GDP排行</span>
-          <RankTable></RankTable>
+          <RankTable sortType="gdp" />
         </div>
       </div>
     </>

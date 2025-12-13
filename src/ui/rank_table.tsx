@@ -30,6 +30,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { CountryFlagMini } from '../ui/country_flag';
+import { getCountriesRanking, type CountryData } from '@/lib/country-data';
 
 // 扩展 ColumnDef 类型以支持 label 属性
 type ColumnMeta = {
@@ -40,27 +41,6 @@ export type ColumnDefWithMeta<T> = ColumnDef<T, unknown> & {
   meta?: ColumnMeta;
 };
 
-const data: Payment[] = [
-  {
-    id: 'CN',
-    country: '中国',
-    visa_free: 66,
-    visa_on_arrival: 12,
-    evisa: 2,
-    gdp: 888888,
-    region: '亚洲',
-  },
-  {
-    id: 'JP',
-    country: '日本',
-    visa_free: 86,
-    visa_on_arrival: 2,
-    gdp: 555555,
-    evisa: 2,
-    region: '亚洲',
-  },
-];
-
 export type Payment = {
   id: string;
   country: string;
@@ -69,6 +49,35 @@ export type Payment = {
   evisa: number;
   gdp: number;
   region: '亚洲' | '北美' | '欧洲' | '非洲' | '大洋洲';
+};
+
+// 将 CountryData 转换为 Payment 类型
+const convertToPayment = (country: CountryData): Payment => {
+  const regionMap: Record<
+    string,
+    '亚洲' | '北美' | '欧洲' | '非洲' | '大洋洲'
+  > = {
+    亚洲: '亚洲',
+    北美: '北美',
+    欧洲: '欧洲',
+    非洲: '非洲',
+    大洋洲: '大洋洲',
+  };
+
+  return {
+    id: country.code,
+    country: country.name_cn,
+    visa_free: country.visa_free_count,
+    visa_on_arrival: country.visa_on_arrival_count,
+    evisa: country.evisa_count,
+    gdp: country.gdp || 0,
+    region: (regionMap[country.region] || '亚洲') as
+      | '亚洲'
+      | '北美'
+      | '欧洲'
+      | '非洲'
+      | '大洋洲',
+  };
 };
 
 const columns: ColumnDefWithMeta<Payment>[] = [
@@ -176,7 +185,11 @@ const columns: ColumnDefWithMeta<Payment>[] = [
   },
 ];
 
-export function DataTableDemo() {
+export function DataTableDemo({
+  sortType = 'freedom',
+}: {
+  sortType?: 'freedom' | 'visa_free' | 'gdp';
+}) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -184,8 +197,28 @@ export function DataTableDemo() {
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
+  const [data, setData] = React.useState<Payment[]>([]);
+  const [loading, setLoading] = React.useState(true);
 
-  // eslint-disable-next-line react-hooks/incompatible-library
+  // 加载数据
+  React.useEffect(() => {
+    const loadData = async () => {
+      setLoading(true);
+      try {
+        const countries = await getCountriesRanking(sortType);
+        const paymentData = countries.map(convertToPayment);
+        setData(paymentData);
+      } catch (error) {
+        console.error('加载数据失败:', error);
+        setData([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, [sortType]);
+
   const table = useReactTable({
     data,
     columns,
@@ -270,7 +303,16 @@ export function DataTableDemo() {
             ))}
           </TableHeader>
           <TableBody>
-            {table.getRowModel().rows?.length ? (
+            {loading ? (
+              <TableRow>
+                <TableCell
+                  colSpan={columns.length}
+                  className="h-24 text-center"
+                >
+                  加载中...
+                </TableCell>
+              </TableRow>
+            ) : table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
@@ -292,7 +334,7 @@ export function DataTableDemo() {
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  No results.
+                  暂无数据
                 </TableCell>
               </TableRow>
             )}
