@@ -31,6 +31,7 @@ import {
 } from '@/components/ui/table';
 import { CountryFlagMini } from '../ui/country_flag';
 import { getCountriesRanking, type CountryData } from '@/lib/country-data';
+import { Spinner } from '@/components/ui/spinner';
 
 // 扩展 ColumnDef 类型以支持 label 属性
 type ColumnMeta = {
@@ -309,7 +310,7 @@ export function DataTableDemo({
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  加载中...
+                  <Spinner />
                 </TableCell>
               </TableRow>
             ) : table.getRowModel().rows?.length ? (

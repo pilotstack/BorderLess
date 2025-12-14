@@ -22,6 +22,7 @@ import {
   type CountryData,
   type PassportRelationshipResponse,
 } from '@/lib/country-data';
+import { Spinner } from '@/components/ui/spinner';
 
 interface RankingData {
   visa_free_rank: number;
@@ -113,7 +114,9 @@ const Passport_detail = () => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen">加载中...</div>
+      <div className="flex items-center justify-center h-screen">
+        <Spinner />
+      </div>
     );
   }
 

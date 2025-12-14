@@ -5,7 +5,6 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from '@/components/ui/input-group';
-import { CountryFlagMedium } from '../ui/country_flag';
 import { CountryFlagMini } from '../ui/country_flag';
 import { Globe, Search, X } from 'lucide-react';
 import { searchCountries, type CountryData } from '@/lib/country-data';
@@ -162,40 +161,6 @@ const Body = () => {
               未找到匹配的国家
             </div>
           )}
-        </div>
-
-        <div className="flex flex-col mt-4 items-center">
-          <p className="text-lg mb-4 ">热门护照</p>
-          <div className="flex w-full flex-wrap gap-2">
-            <button
-              onClick={() => navigate('/passport/JP')}
-              className="border-2 dark:border-purple-100 px-4 py-2 rounded-full flex items-center text-xl gap-2 hover:bg-purple-100/10 transition-colors"
-            >
-              <CountryFlagMedium code="JP" />
-              日本
-            </button>
-            <button
-              onClick={() => navigate('/passport/CN')}
-              className="border-2 dark:border-purple-100 px-4 py-2 rounded-full flex items-center text-xl gap-2 hover:bg-purple-100/10 transition-colors"
-            >
-              <CountryFlagMedium code="CN" />
-              中国
-            </button>
-            <button
-              onClick={() => navigate('/passport/US')}
-              className="border-2 dark:border-purple-100 px-4 py-2 rounded-full flex items-center text-xl gap-2 hover:bg-purple-100/10 transition-colors"
-            >
-              <CountryFlagMedium code="US" />
-              美国
-            </button>
-            <button
-              onClick={() => navigate('/passport/TW')}
-              className="border-2 dark:border-purple-100 px-4 py-2 rounded-full flex items-center text-xl gap-2 hover:bg-purple-100/10 transition-colors"
-            >
-              <CountryFlagMedium code="TW" />
-              中国台湾
-            </button>
-          </div>
         </div>
       </div>
     </>
