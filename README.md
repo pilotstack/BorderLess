@@ -30,7 +30,7 @@
 
 - Node.js 18+
 - pnpm 8+ (或 npm/yarn)
-- python 环境（若无数据源,可产生随机的的 fake 数据）
+- python 环境（若无数据源,可产生随机的**fake**数据）
 
 ### 配置 Supabase
 
@@ -200,4 +200,3 @@ BorderLess/
 [回到顶部 ⬆️](#borderless-)
 
 </div>
-```
