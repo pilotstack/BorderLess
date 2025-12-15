@@ -13,6 +13,9 @@
 
 ![BorderLess Demo](./public/example.png)
 
+<div align="center">
+图中数据为生成的随机数据展示，实际信息以官方为准
+</div>
 ## ✨ 主要特性
 
 - 🗺️ **全球护照覆盖** - 125 个国家/地区的护照信息
