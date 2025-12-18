@@ -116,9 +116,6 @@ importers:
       date-fns:
         specifier: ^4.1.0
         version: 4.1.0
-      echarts:
-        specifier: ^6.0.0
-        version: 6.0.0
       embla-carousel-react:
         specifier: ^8.6.0
         version: 8.6.0(react@19.2.1)
@@ -1575,9 +1572,6 @@ packages:
   dom-helpers@5.2.1:
     resolution: {integrity: sha512-nRCa7CK3VTrM2NmGkIy4cbK7IZlgBE/PYMn55rrXefr5xXDP0LdtfPnblFDoVdcAfslJ7or6iqAUnx0CCGIWQA==}
 
-  echarts@6.0.0:
-    resolution: {integrity: sha512-Tte/grDQRiETQP4xz3iZWSvoHrkCQtwqd6hs+mifXcjrCuo2iKWbajFObuLJVBlDIJlOzgQPd1hsaKt/3+OMkQ==}
-
   electron-to-chromium@1.5.266:
     resolution: {integrity: sha512-kgWEglXvkEfMH7rxP5OSZZwnaDWT7J9EoZCujhnpLbfi0bbNtRkgdX2E3gt0Uer11c61qCYktB3hwkAS325sJg==}
 
@@ -2206,9 +2200,6 @@ packages:
     peerDependencies:
       typescript: '>=4.8.4'
 
-  tslib@2.3.0:
-    resolution: {integrity: sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==}
-
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
 
@@ -2313,9 +2304,6 @@ packages:
 
   zod@4.1.13:
     resolution: {integrity: sha512-AvvthqfqrAhNH9dnfmrfKzX5upOdjUVJYFqNSlkmGf64gRaTzlPwz99IHYnVs28qYAybvAlBV+H7pn0saFY4Ig==}
-
-  zrender@6.0.0:
-    resolution: {integrity: sha512-41dFXEEXuJpNecuUQq6JlbybmnHaqqpGlbH1yxnA5V9MMP4SbohSVZsJIwz+zdjQXSSlR1Vc34EgH1zxyTDvhg==}
 
 snapshots:
 
@@ -3727,11 +3715,6 @@ snapshots:
       '@babel/runtime': 7.28.4
       csstype: 3.2.3
 
-  echarts@6.0.0:
-    dependencies:
-      tslib: 2.3.0
-      zrender: 6.0.0
-
   electron-to-chromium@1.5.266: {}
 
   embla-carousel-react@8.6.0(react@19.2.1):
@@ -4269,8 +4252,6 @@ snapshots:
     dependencies:
       typescript: 5.9.3
 
-  tslib@2.3.0: {}
-
   tslib@2.8.1: {}
 
   tw-animate-css@1.4.0: {}
@@ -4366,7 +4347,3 @@ snapshots:
       zod: 4.1.13
 
   zod@4.1.13: {}
-
-  zrender@6.0.0:
-    dependencies:
-      tslib: 2.3.0
